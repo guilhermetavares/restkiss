@@ -28,11 +28,9 @@ class DjangoResource(Resource):
         return csrf_exempt(super(DjangoResource, self).as_detail(*args, **kwargs))
 
     def is_debug(self):
-        # By default, Django-esque.
         return settings.DEBUG
 
     def build_response(self, data, status=OK):
-        # By default, Django-esque.
         if status == NO_CONTENT:
             # Avoid crashing the client when it tries to parse nonexisting JSON.
             content_type = 'text/plain'
