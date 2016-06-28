@@ -18,9 +18,9 @@ class PyrTestResource(PyramidResource):
     def fake_init(self):
         # Just for testing.
         self.__class__.fake_db = [
-            {"id": 2, "title": 'First post'},
-            {"id": 4, "title": 'Another'},
-            {"id": 5, "title": 'Last'},
+            {"id": "dead-beef", "title": 'First post'},
+            {"id": "de-faced", "title": 'Another'},
+            {"id": "bad-f00d", "title": 'Last'},
         ]
 
     def list(self):
@@ -57,15 +57,15 @@ class PyramidResourceTestCase(unittest.TestCase):
         self.assertEqual(json.loads(resp.body.decode('utf-8')), {
             'objects': [
                 {
-                    'id': 2,
+                    'id': 'dead-beef',
                     'title': 'First post'
                 },
                 {
-                    'id': 4,
+                    'id': 'de-faced',
                     'title': 'Another'
                 },
                 {
-                    'id': 5,
+                    'id': 'bad-f00d',
                     'title': 'Last'
                 }
             ]
@@ -76,13 +76,13 @@ class PyramidResourceTestCase(unittest.TestCase):
         req = testing.DummyRequest()
 
         req = FakeHttpRequest('GET')
-        req.matchdict = {'name': 4}
+        req.matchdict = {'name': 'de-faced'}
 
         resp = detail_endpoint(req)
         self.assertEqual(resp.content_type, 'application/json')
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(json.loads(resp.body.decode('utf-8')), {
-            'id': 4,
+            'id': 'de-faced',
             'title': 'Another'
         })
 
