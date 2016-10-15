@@ -13,3 +13,5 @@ htmlcov
 .cache/
 .eggs/
 .tox/
+*.swp
+.idea/

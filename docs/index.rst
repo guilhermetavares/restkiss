@@ -2,12 +2,13 @@
 restkiss
 ========
 
-A lightweight REST miniframework for Python.
+A fork of the restless_ lightweight REST miniframework for Python.
 
 Works great with Django_, Flask_, Pyramid_, Tornado_ & Itty_, but should be useful for
 many other Python web frameworks. Based on the lessons learned from Tastypie_
 & other REST libraries.
 
+.. _restless: http://github.com/toastdriven/restless
 .. _Django: http://djangoproject.com/
 .. _Flask: http://flask.pocoo.org/
 .. _Pyramid: http://www.pylonsproject.org/
@@ -22,19 +23,19 @@ Features
 * Small, fast codebase
 * JSON output by default, but overridable
 * RESTful
-* Python 3.3+ (with shims to make broke-ass Python 2.6+ work)
+* Python 3.2+ (with shims to make broke-ass Python 2.6+ work)
 * Flexible
 
 
 Anti-Features
 =============
 
-(Things that will never be added...)
+Things that will never be added to the core library - but plugins are encouraged!
 
 * Automatic ORM integration
 * Authorization (per-object or not)
 * Extensive filtering options
-* XML output (though you can implement your own)
+* XML output
 * Metaclasses
 * Mixins
 * HATEOAS

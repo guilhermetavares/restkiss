@@ -4,6 +4,10 @@
 Philosophy Behind Restkiss
 ==========================
 
+.. note::
+   Creator @toastdriven had a very specific goal when building the original
+   Restless, and our goal is to respect it. All of it is here, unchanged.
+
 Quite simply, I care about creating flexible & RESTFul APIs. In building
 Tastypie, I tried to create something extremely complete & comprehensive.
 The result was writing a lot of hook methods (for easy extensibility) & a lot
