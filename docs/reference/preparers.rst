@@ -4,9 +4,9 @@
 Preparers
 =========
 
-restless.preparers
+restkiss.preparers
 ------------------
 
-.. automodule:: restless.preparers
+.. automodule:: restkiss.preparers
    :members:
    :undoc-members:

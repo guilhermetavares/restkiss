@@ -3,7 +3,7 @@ class Preparer(object):
     A plain preparation object which just passes through data.
 
     It also is relevant as the protocol subclasses should implement to work with
-    Restless.
+    Restkiss.
     """
     def __init__(self):
         super(Preparer, self).__init__()

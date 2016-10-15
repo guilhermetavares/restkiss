@@ -5,7 +5,7 @@ Cookbook
 ========
 
 This is a place for community-contributed patterns & ideas for extending
-Restless.
+Restkiss.
 
 
 Authentication

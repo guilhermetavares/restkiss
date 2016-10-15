@@ -4,7 +4,7 @@
 Security
 ========
 
-Restless takes security seriously. By default, it:
+Restkiss takes security seriously. By default, it:
 
 * does not access your filesystem in any way.
 * only allows GET requests, demanding that the user think about who should be
@@ -12,14 +12,14 @@ Restless takes security seriously. By default, it:
 * has ``is_debug`` as ``False`` by default.
 * wraps JSON lists in an object to prevent exploits.
 
-While no known vulnerabilities exist, all software has bugs & Restless is no
+While no known vulnerabilities exist, all software has bugs & Restkiss is no
 exception.
 
 If you believe you have found a security-related issue, please **DO NOT SUBMIT
 AN ISSUE/PULL REQUEST**. This would be a public disclosure & would allow for
 0-day exploits.
 
-Instead, please send an email to "daniel@toastdriven.com" & include the
+Instead, please send an email to "bruno@cravefood.services" & include the
 following information:
 
 * A description of the problem/suggestion.
@@ -28,7 +28,7 @@ following information:
 
   * Python interpreter
   * Web framework
-  * Restless
+  * Restkiss
   * Optionally of the other dependencies involved
 
 Please bear in mind that I'm not a security expert/researcher, so a layman's

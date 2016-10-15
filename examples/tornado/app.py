@@ -1,6 +1,6 @@
 import tornado.ioloop
 from tornado import web, gen
-from restless.tnd import TornadoResource
+from restkiss.tnd import TornadoResource
 
 class PetResource(TornadoResource):
     def prepare(self):

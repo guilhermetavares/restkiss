@@ -42,7 +42,7 @@ def _method(self, *args, **kwargs):
 
 class _BridgeMixin(object):
     """
-    This mixin would pass tornado parameters to restless,
+    This mixin would pass tornado parameters to restkiss,
     and helps to init a resource instance
     """
     def __init__(self, *args, **kwargs):
@@ -100,7 +100,7 @@ class TornadoResource(Resource):
         global _method
 
         new_cls = type(
-            cls.__name__ + '_' + _BridgeMixin.__name__ + '_restless',
+            cls.__name__ + '_' + _BridgeMixin.__name__ + '_restkiss',
             (_BridgeMixin, cls._request_handler_base_,),
             dict(
                 __resource_cls__=cls,

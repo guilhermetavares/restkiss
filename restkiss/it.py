@@ -2,8 +2,8 @@ import re
 
 import itty
 
-from restless.constants import OK, NO_CONTENT
-from restless.resources import Resource
+from restkiss.constants import OK, NO_CONTENT
+from restkiss.resources import Resource
 
 
 class IttyResource(Resource):

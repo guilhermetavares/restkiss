@@ -2,12 +2,12 @@ import unittest
 
 try:
     import itty
-    from restless.it import IttyResource
+    from restkiss.it import IttyResource
 except ImportError:
     itty = None
     IttyResource = object
 
-from restless.utils import json
+from restkiss.utils import json
 
 from .fakes import FakeHttpRequest
 

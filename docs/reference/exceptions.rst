@@ -4,9 +4,9 @@
 Exceptions
 ==========
 
-restless.exceptions
+restkiss.exceptions
 -------------------
 
-.. automodule:: restless.exceptions
+.. automodule:: restkiss.exceptions
    :members:
    :undoc-members:

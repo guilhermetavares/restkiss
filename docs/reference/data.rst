@@ -4,9 +4,9 @@
 Data
 ====
 
-restless.data
+restkiss.data
 -------------
 
-.. automodule:: restless.data
+.. automodule:: restkiss.data
    :members:
    :undoc-members:

@@ -3,8 +3,8 @@ from decimal import Decimal
 import unittest
 import uuid
 
-from restless.exceptions import BadRequest
-from restless.serializers import JSONSerializer
+from restkiss.exceptions import BadRequest
+from restkiss.serializers import JSONSerializer
 
 
 class JSONSerializerTestCase(unittest.TestCase):

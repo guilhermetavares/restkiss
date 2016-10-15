@@ -3,7 +3,7 @@ import redis
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 
-from restless.pyr import PyramidResource
+from restkiss.pyr import PyramidResource
 
 class UserResource(PyramidResource):
     def __init__(self, *args, **kwargs):

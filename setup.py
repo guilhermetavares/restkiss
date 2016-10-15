@@ -4,15 +4,15 @@ from setuptools import setup
 
 
 setup(
-    name='restless',
-    version='2.0.2-dev',
+    name='restkiss',
+    version='2.0.2',
     description='A lightweight REST miniframework for Python.',
-    author='Daniel Lindsley',
-    author_email='daniel@toastdriven.com',
-    url='http://github.com/toastdriven/restless/',
+    author='Bruno Marques',
+    author_email='bruno@cravefood.services',
+    url='http://github.com/CraveFood/restkiss',
     long_description=open('README.rst', 'r').read(),
     packages=[
-        'restless',
+        'restkiss',
     ],
     requires=[
         'six(>=1.4.0)',
@@ -22,6 +22,7 @@ setup(
     ],
     tests_require=[
         'mock',
+        'tox',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

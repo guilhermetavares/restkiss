@@ -2,12 +2,12 @@ import unittest
 
 try:
     from pyramid import testing
-    from restless.pyr import PyramidResource
+    from restkiss.pyr import PyramidResource
 except ImportError:
     testing = None
     PyramidResource = object
 
-from restless.utils import json
+from restkiss.utils import json
 
 from .fakes import FakeHttpRequest, FakeHttpResponse
 

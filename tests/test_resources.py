@@ -1,10 +1,10 @@
 import six
 import unittest
 
-from restless.exceptions import HttpError, NotFound, MethodNotImplemented
-from restless.preparers import Preparer, FieldsPreparer
-from restless.resources import Resource
-from restless.utils import json
+from restkiss.exceptions import HttpError, NotFound, MethodNotImplemented
+from restkiss.preparers import Preparer, FieldsPreparer
+from restkiss.resources import Resource
+from restkiss.utils import json
 
 from .fakes import FakeHttpRequest, FakeHttpResponse
 
@@ -105,7 +105,7 @@ class ResourceTestCase(unittest.TestCase):
         # Custom status code.
         self.assertEqual(resp.status_code, 404)
 
-        # Non-restless exception.
+        # Non-restkiss exception.
         unknown_err = AttributeError("'something' not found on the object.")
         resp = self.res.build_error(unknown_err)
         resp_body = json.loads(resp.body)

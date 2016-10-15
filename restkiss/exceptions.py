@@ -7,9 +7,9 @@ from .constants import (APPLICATION_ERROR, UNAUTHORIZED, NOT_FOUND, BAD_REQUEST,
 from .constants import METHOD_NOT_ALLOWED, METHOD_NOT_IMPLEMENTED, UNAVAILABLE
 
 
-class RestlessError(Exception):
+class RestkissError(Exception):
     """
-    A common base exception from which all other exceptions in ``restless``
+    A common base exception from which all other exceptions in ``restkiss``
     inherit from.
 
     No special attributes or behaviors.
@@ -17,13 +17,13 @@ class RestlessError(Exception):
     pass
 
 
-class HttpError(RestlessError):
+class HttpError(RestkissError):
     """
     The foundational HTTP-related error.
 
-    All other HTTP errors in ``restless`` inherit from this one.
+    All other HTTP errors in ``restkiss`` inherit from this one.
 
-    Has a ``status`` attribute. If present, ``restless`` will use this as the
+    Has a ``status`` attribute. If present, ``restkiss`` will use this as the
     ``status_code`` in the response.
 
     Has a ``msg`` attribute. Has a reasonable default message (override-able

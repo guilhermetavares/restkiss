@@ -1,7 +1,7 @@
 import sys
 import unittest
 
-from restless.utils import format_traceback
+from restkiss.utils import format_traceback
 
 
 class FormatTracebackTestCase(unittest.TestCase):

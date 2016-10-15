@@ -1,46 +1,46 @@
 .. _tutorial:
 
 =================
-Restless Tutorial
+Restkiss Tutorial
 =================
 
-Restless is an alternative take on REST frameworks. While other frameworks
+Restkiss is an alternative take on REST frameworks. While other frameworks
 attempt to be very complete, include special features or tie deeply to ORMs,
-Restless is a trip back to the basics.
+Restkiss is a trip back to the basics.
 
 It is fast, lightweight, and works with a small (but growing) number of
 different web frameworks. If you're interested in more of the backstory &
-reasoning behind Restless, please have a gander at the :ref:`philosophy`
+reasoning behind Restkiss, please have a gander at the :ref:`philosophy`
 documentation.
 
 You can find some complete example implementation code in `the repository`_.
 
-.. _`the repository`: https://github.com/toastdriven/restless/tree/master/examples
+.. _`the repository`: https://github.com/CraveFood/restkiss/tree/master/examples
 
 
-Why Restless?
+Why Restkiss?
 =============
 
-Restless tries to be RESTful by default, but flexible enough. The main
+Restkiss tries to be RESTful by default, but flexible enough. The main
 ``Resource`` class has data methods (that you implement) for all the main
 RESTful actions. It also uses HTTP status codes as correctly as possible.
 
-Restless is BYOD (bring your own data) and hence, works with almost any
+Restkiss is BYOD (bring your own data) and hence, works with almost any
 ORM/data source. If you can import a module to work with the data & can
-represent it as JSON, Restless can work with it.
+represent it as JSON, Restkiss can work with it.
 
-Restless is small & easy to keep in your head. Common usages involve
+Restkiss is small & easy to keep in your head. Common usages involve
 overridding just a few easily remembered method names. Total source code is
 a under a thousand lines of code.
 
-Restless supports Python 3 **first**, but has backward-compatibility to work
+Restkiss supports Python 3 **first**, but has backward-compatibility to work
 with Python 2.6+ code. Because the future is here.
 
-Restless is JSON-only by default. Most everything can speak JSON, it's a *data*
+Restkiss is JSON-only by default. Most everything can speak JSON, it's a *data*
 format (not a *document* format) & it's pleasant for both computers and humans
 to work with.
 
-Restless is well-tested.
+Restkiss is well-tested.
 
 
 Installation
@@ -49,12 +49,12 @@ Installation
 Installation is a relatively simple affair. For the most recent stable release,
 simply use pip_ to run::
 
-    $ pip install restless
+    $ pip install restkiss
 
 Alternately, you can download the latest development source from Github::
 
-    $ git clone https://github.com/toastdriven/restless.git
-    $ cd restless
+    $ git clone https://github.com/CraveFood/restkiss.git
+    $ cd restkiss
     $ python setup.py install
 
 .. _pip: http://pip-installer.org/
@@ -63,15 +63,15 @@ Alternately, you can download the latest development source from Github::
 Getting Started
 ===============
 
-Restless currently supports Django_, Flask_, Pyramid_ & Itty_.
+Restkiss currently supports Django_, Flask_, Pyramid_ & Itty_.
 For the purposes of most of this
 tutorial, we'll assume you're using Django. The process for developing &
 interacting with the API via Flask is nearly identical (& we'll be covering the
 differences at the end of this document).
 
-There are only two steps to getting a Restless API up & functional. They are:
+There are only two steps to getting a Restkiss API up & functional. They are:
 
-#. Implement a ``restless.Resource`` subclass
+#. Implement a ``restkiss.Resource`` subclass
 #. Hook up the resource to your URLs
 
 Before beginning, you should be familiar with the common understanding of the
@@ -87,7 +87,7 @@ behavior of the various `REST methods`_.
 About Resources
 ===============
 
-The main class in Restless is :py:class:`restless.resources.Resource`. It provides
+The main class in Restkiss is :py:class:`restkiss.resources.Resource`. It provides
 all the dispatching/authentication/deserialization/serialization/response
 stuff so you don't have to.
 
@@ -100,26 +100,26 @@ access/modification. Those methods are:
 * ``Resource.update`` - *PUT /identifier/*
 * ``Resource.delete`` - *DELETE /identifier/*
 
-Restless also supports some less common combinations (due to their more complex
+Restkiss also supports some less common combinations (due to their more complex
 & use-specific natures):
 
 * ``Resource.create_detail`` - *POST /identifier/*
 * ``Resource.update_list`` - *PUT /*
 * ``Resource.delete_list`` - *DELETE /*
 
-Restless includes modules for various web frameworks. To create a resource to
+Restkiss includes modules for various web frameworks. To create a resource to
 work with Django, you'll need to subclass from
-:py:class:`restless.dj.DjangoResource`.
+:py:class:`restkiss.dj.DjangoResource`.
 To create a resource to work with Flask, you'll need to subclass from
-:py:class:`restless.fl.FlaskResource`.
+:py:class:`restkiss.fl.FlaskResource`.
 
 .. note:
 
-    The module names ``restless.dj`` & ``restless.fl`` are used (in place of
-    ``restless.django`` & ``restless.flask``) to prevent import confusion.
+    The module names ``restkiss.dj`` & ``restkiss.fl`` are used (in place of
+    ``restkiss.django`` & ``restkiss.flask``) to prevent import confusion.
 
 ``DjangoResource`` is itself a subclass, inheriting from
-``restless.resource.Resource`` & overrides a small number of methods to make
+``restkiss.resource.Resource`` & overrides a small number of methods to make
 things work smoothly.
 
 
@@ -151,7 +151,7 @@ a ``posts`` application, which has a model setup like so...::
 This is just enough to get the ORM going & use some real data.
 
 The rest of the app (views, URLs, admin, forms, etc.) really aren't important
-for the purposes of creating a basic Restless API, so we'll ignore them for now.
+for the purposes of creating a basic Restkiss API, so we'll ignore them for now.
 
 
 Creating A Resource
@@ -165,8 +165,8 @@ tutorial app, we'll place this code in a new ``posts/api.py`` file.
 We'll start with the most basic functional example.::
 
     # posts/api.py
-    from restless.dj import DjangoResource
-    from restless.preparers import FieldsPreparer
+    from restkiss.dj import DjangoResource
+    from restkiss.preparers import FieldsPreparer
 
     from posts.models import Post
 
@@ -188,7 +188,7 @@ We'll start with the most basic functional example.::
         def detail(self, pk):
             return Post.objects.get(id=pk)
 
-As we've already covered, we're inheriting from ``restless.dj.DjangoResource``.
+As we've already covered, we're inheriting from ``restkiss.dj.DjangoResource``.
 We're also importing our ``Post`` model, because serving data out of an API
 is kinda important.
 
@@ -209,7 +209,7 @@ information buried deep in the data model. The mapping is defined like...::
 
 This dotted path is what allows use to drill in. For instance, the ``author``
 field above has a path of ``user.username``. When serializing, this will cause
-Restless to look for an attribute (or a key on a dict) called ``user``. From
+Restkiss to look for an attribute (or a key on a dict) called ``user``. From
 there, it will look further into the resulting object/dict looking for a
 ``username`` attribute/key, returning it as the final value.
 
@@ -233,7 +233,7 @@ the data that should be served.
 
 .. note:
 
-    Restless has this pattern of pairs of methods for each of the RESTful
+    Restkiss has this pattern of pairs of methods for each of the RESTful
     HTTP verbs, list variant & detail variant.
 
     ``create/create_detail`` handle ``POST``. ``update_list/update`` handle
@@ -243,8 +243,8 @@ the data that should be served.
 Hooking Up The URLs
 ===================
 
-URLs to Restless resources get hooked up much like any other class-based view.
-However, Restless's :py:class:`restless.dj.DjangoResource` comes with a
+URLs to Restkiss resources get hooked up much like any other class-based view.
+However, Restkiss's :py:class:`restkiss.dj.DjangoResource` comes with a
 special method called ``urls``, which makes hooking up URLs more convenient.
 
 You can hook the URLs for the resource up wherever you want. The recommended
@@ -348,8 +348,8 @@ A read-only API is nice & all, but sometimes you want to be able to create data
 as well. So we'll implement some more methods.::
 
     # posts/api.py
-    from restless.dj import DjangoResource
-    from restless.preparers import FieldsPreparer
+    from restkiss.dj import DjangoResource
+    from restkiss.preparers import FieldsPreparer
 
     from posts.models import Post
 
@@ -405,7 +405,7 @@ code is relatively straightforward ORM calls, but there are a few interesting
 new things going on here.
 
 Note that the ``create`` & ``update`` methods are both using a special
-``self.data`` variable. This is created by Restless during deserialization &
+``self.data`` variable. This is created by Restkiss during deserialization &
 is the **JSON** data the user sends as part of the request.
 
 .. warning::
@@ -415,7 +415,7 @@ is the **JSON** data the user sends as part of the request.
     define).
 
     You know your data best & validation is **very** non-standard between
-    frameworks, so this is a place where Restless punts.
+    frameworks, so this is a place where Restkiss punts.
 
     Some people like cleaning the data with ``Forms``, others prefer to
     hand-sanitize, some do model validation, etc. Do what works best for you.
@@ -425,12 +425,12 @@ is the **JSON** data the user sends as part of the request.
 
 Also note that ``delete`` is the first method with **no return value**. You
 can do the same thing on ``create/update`` if you like. When there's no
-meaningful data returned, Restless simply sends back a correct status code
+meaningful data returned, Restkiss simply sends back a correct status code
 & an empty body.
 
-Finally, there's no need to hook up more URLconfs. Restless delegates based
+Finally, there's no need to hook up more URLconfs. Restkiss delegates based
 on a list & a detail endpoint. All further dispatching is HTTP verb-based &
-handled by Restless.
+handled by Restkiss.
 
 
 Testing the API, Round 2
@@ -449,14 +449,14 @@ You should get something like this back...::
 Wait, what?!! But we added our new methods & everything!
 
 The reason you get unauthorized is that by default, **only GET** requests are
-allowed by Restless. It's the only sane/safe default to have & it's very easy
+allowed by Restkiss. It's the only sane/safe default to have & it's very easy
 to fix.
 
 
 Error Handling
 ==============
 
-By default, Restless tries to serialize any exceptions that may be encountered.
+By default, Restkiss tries to serialize any exceptions that may be encountered.
 What gets serialized depends on two methods: ``Resource.is_debug()`` &
 ``Resource.bubble_exceptions()``.
 
@@ -475,7 +475,7 @@ raised during processing, you'll get a response like::
         "error": "Whatever."
     }
 
-If ``Resource.is_debug()`` returns ``True`` (the default is ``False``), Restless
+If ``Resource.is_debug()`` returns ``True`` (the default is ``False``), Restkiss
 will also include a traceback. For example::
 
     HTTP/1.0 500 INTERNAL SERVER ERROR
@@ -510,8 +510,8 @@ We're going to override one more method in our resource subclass, this time
 adding the ``is_authenticated`` method.::
 
     # posts/api.py
-    from restless.dj import DjangoResource
-    from restless.preparers import FieldsPreparer
+    from restkiss.dj import DjangoResource
+    from restkiss.preparers import FieldsPreparer
 
     from posts.models import Post
 
@@ -594,7 +594,7 @@ Hooray! Now we can check for it in the list view
 (``GET`` http://127.0.0.1:8000/api/posts/) or by a detail (``GET``
 http://127.0.0.1:8000/api/posts/3/).
 
-We can also update it. Restless expects **complete** bodies (don't try to send
+We can also update it. Restkiss expects **complete** bodies (don't try to send
 partial updates, that's typically reserved for ``PATCH``).::
 
     $ curl -X PUT -H "Content-Type: application/json" -d '{"title": "Another new library released!", "author": "daniel", "body": "I just released a new piece of software!"}' http://127.0.0.1:8000/api/posts/3/
@@ -626,7 +626,7 @@ Outside of the ORM, precious little of what we implemented above was
 Django-specific. If you used an ORM like `Peewee`_ or `SQLAlchemy`_, you'd have
 very similar-looking code.
 
-In actuality, there are just two changes to make the Restless-portion of the
+In actuality, there are just two changes to make the Restkiss-portion of the
 above work within Flask.
 
 #. Change the inheritance
@@ -639,12 +639,12 @@ above work within Flask.
 Change The Inheritance
 ----------------------
 
-Restless ships with a :py:class:`restless.fl.FlaskResource` class, akin to the
+Restkiss ships with a :py:class:`restkiss.fl.FlaskResource` class, akin to the
 ``DjangoResource``. So the first change is dead simple.::
 
-    # Was: from restless.dj import DjangoResource
+    # Was: from restkiss.dj import DjangoResource
     # Becomes:
-    from restless.fl import FlaskResource
+    from restkiss.fl import FlaskResource
 
     # ...
 

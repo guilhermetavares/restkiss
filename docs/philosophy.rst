@@ -1,7 +1,7 @@
 .. _philosophy:
 
 ==========================
-Philosophy Behind Restless
+Philosophy Behind Restkiss
 ==========================
 
 Quite simply, I care about creating flexible & RESTFul APIs. In building

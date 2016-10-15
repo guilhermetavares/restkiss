@@ -1,6 +1,6 @@
 from flask import Flask
 import redis
-from restless.fl import FlaskResource
+from restkiss.fl import FlaskResource
 import time
 app = Flask(__name__)
 

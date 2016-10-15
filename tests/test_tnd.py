@@ -2,8 +2,8 @@ import unittest
 import socket
 import six
 
-from restless.utils import json
-from restless.constants import UNAUTHORIZED
+from restkiss.utils import json
+from restkiss.constants import UNAUTHORIZED
 
 
 def _newer_or_equal_(v):
@@ -25,7 +25,7 @@ def _equal_(v):
     return True
 
 try:
-    from restless.tnd import TornadoResource, _BridgeMixin
+    from restkiss.tnd import TornadoResource, _BridgeMixin
     from tornado import testing, web, httpserver, gen, version_info
     from tornado.iostream import IOStream
     if _newer_or_equal_((4, 0, 0, 0)):
@@ -228,7 +228,7 @@ class InternalTestCase(BaseTestCase):
 
     def test_class(self):
         """ test the generated tornado.web.RequestHandler """
-        self.assertEqual(self.new_handler.__class__.__name__, 'TndBasicTestResource__BridgeMixin_restless')
+        self.assertEqual(self.new_handler.__class__.__name__, 'TndBasicTestResource__BridgeMixin_restkiss')
         self.assertTrue(_BridgeMixin in self.new_handler.__class__.__mro__)
         self.assertTrue(web.RequestHandler in self.new_handler.__class__.__mro__)
 

@@ -4,10 +4,10 @@
 Constants
 =========
 
-restless.constants
+restkiss.constants
 ------------------
 
-A set of constants included with ``restless``. Mostly nice status code mappings
+A set of constants included with ``restkiss``. Mostly nice status code mappings
 for use in exceptions or the ``Resource.status_map``.
 
 **OK** = ``200``

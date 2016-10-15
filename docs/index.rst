@@ -1,5 +1,5 @@
 ========
-restless
+restkiss
 ========
 
 A lightweight REST miniframework for Python.

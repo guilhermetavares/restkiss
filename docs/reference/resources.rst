@@ -4,48 +4,48 @@
 Resources
 =========
 
-restless.resources
+restkiss.resources
 ------------------
 
-.. automodule:: restless.resources
+.. automodule:: restkiss.resources
    :members:
    :undoc-members:
 
 
-restless.dj
+restkiss.dj
 -----------
 
-.. automodule:: restless.dj
+.. automodule:: restkiss.dj
    :members:
    :undoc-members:
 
 
-restless.fl
+restkiss.fl
 -----------
 
-.. automodule:: restless.fl
+.. automodule:: restkiss.fl
    :members:
    :undoc-members:
 
 
-restless.pyr
+restkiss.pyr
 ------------
 
-.. automodule:: restless.pyr
+.. automodule:: restkiss.pyr
    :members:
    :undoc-members:
 
 
-restless.it
+restkiss.it
 -----------
 
-.. automodule:: restless.it
+.. automodule:: restkiss.it
    :members:
    :undoc-members:
 
 
-restless.tnd
+restkiss.tnd
 ------------
 
-.. autoclass:: restless.tnd.TornadoResource
+.. autoclass:: restkiss.tnd.TornadoResource
     :members: as_detail, as_list, request, application, _request_handler_base_, r_handler

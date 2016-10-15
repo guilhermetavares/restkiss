@@ -1,13 +1,13 @@
 ========
-restless
+restkiss
 ========
 
-.. image:: https://travis-ci.org/CraveFood/restless.png?branch=master
-        :target: https://travis-ci.org/CraveFood/restless
+.. image:: https://travis-ci.org/CraveFood/restkiss.png?branch=master
+        :target: https://travis-ci.org/CraveFood/restkiss
 
 A lightweight REST miniframework for Python.
 
-Documentation is at http://restless.readthedocs.org/.
+Documentation is at http://restkiss.readthedocs.org/.
 
 Works great with Django_, Flask_, Pyramid_, Tornado_ & Itty_, but should be useful for
 many other Python web frameworks. Based on the lessons learned from Tastypie_
@@ -74,8 +74,8 @@ Example code:
     # posts/api.py
     from django.contrib.auth.models import User
 
-    from restless.dj import DjangoResource
-    from restless.preparers import FieldsPreparer
+    from restkiss.dj import DjangoResource
+    from restkiss.preparers import FieldsPreparer
 
     from posts.models import Post
 

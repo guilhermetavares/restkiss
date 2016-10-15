@@ -3,12 +3,12 @@ import unittest
 try:
     # Ugh. Globals for Flask.
     import flask
-    from restless.fl import FlaskResource
+    from restkiss.fl import FlaskResource
 except ImportError:
     flask = None
     FlaskResource = object
 
-from restless.utils import json
+from restkiss.utils import json
 
 from .fakes import FakeHttpRequest
 
@@ -42,7 +42,7 @@ class FlaskResourceTestCase(unittest.TestCase):
         super(FlaskResourceTestCase, self).setUp()
         self.res = FlTestResource()
 
-        self.app = flask.Flask('test_restless')
+        self.app = flask.Flask('test_restkiss')
         self.app.config['DEBUG'] = True
 
         # Just for the fake data.

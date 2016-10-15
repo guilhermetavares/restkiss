@@ -1,10 +1,10 @@
 .. _extending:
 
 ==================
-Extending Restless
+Extending Restkiss
 ==================
 
-Restless is meant to handle many simpler cases well & have enough extensibility
+Restkiss is meant to handle many simpler cases well & have enough extensibility
 to handle more complex API tasks.
 
 However, a specific goal of the project is to not expand the scope much & simply
@@ -21,7 +21,7 @@ We'll be covering:
 Custom Endpoints
 ================
 
-Sometimes you need to provide more than just the typical HTTP verbs. Restless
+Sometimes you need to provide more than just the typical HTTP verbs. Restkiss
 allows you to hook up custom endpoints that can take advantage of much of the
 ``Resource``.
 
@@ -34,8 +34,8 @@ Implementing these views requires a couple simple steps:
 For instance, if you wanted to added a schema view (``/api/posts/schema/``)
 that responded to ``GET`` requests, you'd first write the method::
 
-    from restless.dj import DjangoResource
-    from restless.resources import skip_prepare
+    from restkiss.dj import DjangoResource
+    from restkiss.resources import skip_prepare
 
 
     class PostResource(DjangoResource):
@@ -58,8 +58,8 @@ The next step is to update the :py:attr:`Resource.http_methods`. This can
 either be fully written out in your class or (as I prefer) a small extension
 to your ``__init__``...::
 
-    from restless.dj import DjangoResource
-    from restless.resources import skip_prepare
+    from restkiss.dj import DjangoResource
+    from restkiss.resources import skip_prepare
 
 
     class PostResource(DjangoResource):
@@ -94,8 +94,8 @@ manually or (once again) by extending a built-in method.::
     # Add the correct import here.
     from django.conf.urls import url
 
-    from restless.dj import DjangoResource
-    from restless.resources import skip_prepare
+    from restkiss.dj import DjangoResource
+    from restkiss.resources import skip_prepare
 
 
     class PostResource(DjangoResource):
@@ -109,7 +109,7 @@ manually or (once again) by extending a built-in method.::
 
         # The usual methods, then...
 
-        # Note: We're using the ``skip_prepare`` decorator here so that Restless
+        # Note: We're using the ``skip_prepare`` decorator here so that Restkiss
         # doesn't run ``prepare`` on the schema data.
         # If your custom view returns a typical ``object/dict`` (like the
         # ``detail`` method), you can omit this.
@@ -136,7 +136,7 @@ manually or (once again) by extending a built-in method.::
 
     This step varies from framework to framework around hooking up the
     URLs/routes. The code is specific to the
-    :py:class:`restless.dj.DjangoResource`, but the approach is the same
+    :py:class:`restkiss.dj.DjangoResource`, but the approach is the same
     regardless.
 
 You should now be able to hit something like http://127.0.0.1/api/posts/schema/
@@ -149,7 +149,7 @@ Customizing Data Output
 There are three approaches to customizing your data ouput.
 
 #. The built-in ``Preparer/FieldsPreparer`` (simple)
-#. Overriding :py:meth:`restless.resources.Resource.prepare` (happy medium)
+#. Overriding :py:meth:`restkiss.resources.Resource.prepare` (happy medium)
 #. Per-method data (flexible but most work)
 
 Fields
@@ -199,8 +199,8 @@ could do something like::
 
     from django.contrib.auth.models import User
 
-    from restless.dj import DjangoResource
-    from restless.preparers import FieldsPreparer
+    from restkiss.dj import DjangoResource
+    from restkiss.preparers import FieldsPreparer
 
 
     class UserResource(DjangoResource):
@@ -237,7 +237,7 @@ transformation you want here, as long as you return a plain, serializable
 Per-Method Data
 ---------------
 
-Because Restless can serve plain old Python objects (anything JSON serializable
+Because Restkiss can serve plain old Python objects (anything JSON serializable
 + ``datetime`` + ``decimal``), the ultimate form of control is simply to load
 your data however you want, then return a simple/serializable form.
 
@@ -245,7 +245,7 @@ For example, Django's ``models.Model`` classes are not normally
 JSON-serializable. We also may want to expose related data in a nested form.
 Here's an example of doing something like that.::
 
-    from restless.dj import DjangoResource
+    from restkiss.dj import DjangoResource
 
     from posts.models import Post
 
@@ -276,8 +276,8 @@ construction easier. For example::
 
     from django.contrib.auth.models import User
 
-    from restless.dj import DjangoResource
-    from restless.preparers import FieldsPreparer
+    from restkiss.dj import DjangoResource
+    from restkiss.preparers import FieldsPreparer
 
     from posts.models import Post
 
@@ -320,7 +320,7 @@ or security holes in their services. However, there's no real standard or
 consensus on doing data validation even within the **individual** framework
 communities themselves, let alone *between* frameworks.
 
-So unfortunately, Restless mostly ignores this issue, leaving you to do data
+So unfortunately, Restkiss mostly ignores this issue, leaving you to do data
 validation the way you think is best.
 
 The good news is that the data you'll need to validate is already in a
@@ -333,8 +333,8 @@ framework, we'll use those as an example...::
 
     from django.forms import ModelForm
 
-    from restless.dj import DjangoResource
-    from restless.exceptions import BadRequest
+    from restkiss.dj import DjangoResource
+    from restkiss.exceptions import BadRequest
 
 
     class UserForm(ModelForm):
@@ -373,8 +373,8 @@ up your code into a validation method. An example of this might look like...::
 
     from django.forms import ModelForm
 
-    from restless.dj import DjangoResource
-    from restless.exceptions import BadRequest
+    from restkiss.dj import DjangoResource
+    from restkiss.exceptions import BadRequest
 
 
     class UserForm(ModelForm):
@@ -424,7 +424,7 @@ up your code into a validation method. An example of this might look like...::
 Alternative Serialization
 =========================
 
-For some, Restless' JSON-only syntax might not be appealing. Fortunately,
+For some, Restkiss' JSON-only syntax might not be appealing. Fortunately,
 overriding this is not terribly difficult.
 
 For the purposes of demonstration, we'll implement YAML in place of JSON.
@@ -437,7 +437,7 @@ importable for your ``Resource``.::
 
     import yaml
 
-    from restless.serializers import Serializer
+    from restkiss.serializers import Serializer
 
 
     class YAMLSerializer(Serializer):
@@ -464,8 +464,8 @@ onto your ``Resource``.::
 You can even do things like handle multiple serialization formats, say if the
 user provides a ``?format=yaml`` GET param...::
 
-    from restless.serializers import Serializer
-    from restless.utils import json, MoreTypesJSONEncoder
+    from restkiss.serializers import Serializer
+    from restkiss.utils import json, MoreTypesJSONEncoder
 
     from django.template import Context, Template
 

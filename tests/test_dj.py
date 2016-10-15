@@ -8,15 +8,15 @@ try:
     from django.conf import settings
     settings.configure(DEBUG=True)
 
-    from restless.dj import DjangoResource
+    from restkiss.dj import DjangoResource
 except ImportError:
     settings = None
     DjangoResource = object
 
-from restless.exceptions import Unauthorized
-from restless.preparers import FieldsPreparer
-from restless.resources import skip_prepare
-from restless.utils import json
+from restkiss.exceptions import Unauthorized
+from restkiss.preparers import FieldsPreparer
+from restkiss.resources import skip_prepare
+from restkiss.utils import json
 
 from .fakes import FakeHttpRequest, FakeModel
 

@@ -4,9 +4,9 @@
 Serializers
 ===========
 
-restless.serializers
+restkiss.serializers
 --------------------
 
-.. automodule:: restless.serializers
+.. automodule:: restkiss.serializers
    :members:
    :undoc-members:

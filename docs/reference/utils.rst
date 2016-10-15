@@ -4,9 +4,9 @@
 Utils
 =====
 
-restless.utils
+restkiss.utils
 --------------
 
-.. automodule:: restless.utils
+.. automodule:: restkiss.utils
    :members:
    :undoc-members:
