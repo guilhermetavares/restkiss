@@ -11,7 +11,7 @@ from .utils import format_traceback
 
 def config_resource_name(view_type, module, class_name):
     """
-    Add a name for monitoring apps, like a NewRelic
+    Add a friendly name for monitoring apps, like a NewRelic
     """
     def decorator(f):
         def inner(*args, **kwargs):
