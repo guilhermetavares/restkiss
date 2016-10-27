@@ -9,6 +9,20 @@ from .serializers import JSONSerializer
 from .utils import format_traceback
 
 
+def config_resource_name(view_type, module, class_name):
+    """
+    Add a name for monitoring apps, like a NewRelic
+    """
+    def decorator(f):
+        def inner(*args, **kwargs):
+            return f(*args, **kwargs)
+        inner.__name__ = str('{0}:{1}'.format(class_name, view_type))
+        inner.__doc__ = f.__doc__
+        inner.__module__ = module
+        return inner
+    return decorator
+
+
 def skip_prepare(func):
     """
     A convenience decorator for indicating the raw data should not be prepared.
@@ -132,6 +146,7 @@ class Resource(object):
 
         :returns: View function
         """
+        @config_resource_name(view_type, cls.__module__, cls.__name__)
         def _wrapper(request, *args, **kwargs):
             # Make a new instance so that no state potentially leaks between
             # instances.
